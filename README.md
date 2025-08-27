@@ -36,7 +36,7 @@ frontend-products-angular/
 Clonar el repositorio:
 
 `bash`
-git clone [https://github.com/tu-usuario/frontend-products-angular.git](https://github.com/Rodriguezp809rd/frontend-products-angular.git)
+git clone https://github.com/Rodriguezp809rd/frontend-products-angular.git
 cd frontend-products-angular
 
 ## Backend (API local)
