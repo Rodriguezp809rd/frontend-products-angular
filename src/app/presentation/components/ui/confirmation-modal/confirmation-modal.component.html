@@ -1,0 +1,16 @@
+<div class="overlay" (click)="!loading && cancel.emit()"></div>
+
+<div class="modal" role="dialog" aria-modal="true">
+  <div class="content">
+    <p class="text">{{ message }}</p>
+  </div>
+
+  <div class="footer">
+    <button class="btn ghost" (click)="cancel.emit()" [disabled]="loading">
+      {{ cancelLabel }}
+    </button>
+    <button class="btn primary" (click)="confirm.emit()" [disabled]="loading">
+      {{ loading ? 'Eliminando…' : confirmLabel }}
+    </button>
+  </div>
+</div>

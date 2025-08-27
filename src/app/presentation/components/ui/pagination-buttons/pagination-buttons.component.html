@@ -1,0 +1,5 @@
+<div class="pager">
+  <button class="btn" [disabled]="currentPage===1" (click)="go(currentPage-1)">Anterior</button>
+  <button *ngFor="let p of pages()" class="btn" [class.active]="p===currentPage" (click)="go(p)">{{ p }}</button>
+  <button class="btn" [disabled]="currentPage===totalPages" (click)="go(currentPage+1)">Siguiente</button>
+</div>

@@ -1,0 +1,69 @@
+/* Fondo */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  z-index: 9990;
+}
+
+/* Caja del modal (más alta) */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 460px;                 /* ancho compacto */
+  max-width: calc(100% - 32px);
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.18);
+  overflow: hidden;
+  z-index: 10000;
+
+  /* 👇 aumenta altura y fija footer al fondo */
+  min-height: 240px;            /* súbelo a 260–280px si lo quieres más alto */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Contenido */
+.content {
+  padding: 26px 28px;
+  border-bottom: 1px solid #eef1f5;
+  flex: 1;                      /* ocupa el alto disponible */
+}
+
+.text {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.45;
+  color: #1f2937;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  padding: 18px 20px 22px;
+}
+
+/* Botones */
+.btn {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  height: 44px;
+  min-width: 164px;
+  padding: 0 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .15s ease;
+}
+
+.btn.ghost { background: #eef2f7; color: #334155; }
+.btn.ghost:hover { background: #e2e8f0; }
+
+.btn.primary { background: #ffe16a; color: #1e293b; box-shadow: 0 2px 6px rgba(0,0,0,.08); }
+.btn.primary:hover { background: #ffd84d; }
+
+.btn:disabled { opacity: .65; cursor: not-allowed; }

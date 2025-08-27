@@ -1,0 +1,19 @@
+.page-container { max-width: 1200px; margin: 0 auto; padding: 40px; }
+
+.header { display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px; }
+.title { font-size: 24px; font-weight: 700; color: #1e2b4f; }
+.add-button { background:#ffcb05; color:#fff; font-weight:700; padding:10px 18px; border-radius:6px; text-decoration:none; }
+.add-button:hover { background:#e6b500; }
+.filters { display:flex; gap:16px; margin-bottom:16px; }
+
+.table-container { 
+    background:#fff;
+     border-radius:0; 
+     overflow:visible;
+      box-shadow:none;
+       padding: 0;
+     }
+
+.error-message, .no-data { text-align:center; padding: 20px; color:#888; }
+.pagination-footer { display:flex; justify-content:space-between; align-items:center; margin-top:16px; }
+.result-count { color:#666; font-size: 14px; }

@@ -1,0 +1,26 @@
+<td>
+  <div class="logo">
+    <img [src]="product.logo" [alt]="product.name" />
+  </div>
+</td>
+
+<td title="{{ product.name }}">
+  <div class="name">{{ product.name }}</div>
+</td>
+
+<td title="{{ product.description }}">
+  <div class="desc">{{ product.description }}</div>
+</td>
+
+<td>{{ product.date_release }}</td>
+<td>{{ product.date_revision }}</td>
+
+<td>
+  <div class="menu">
+    <button class="dots" (click)="toggleMenu($event)">⋮</button>
+    <div class="dropdown" *ngIf="open">
+      <button class="item" (click)="onEdit()">✏️ Editar</button>
+      <button class="item danger" (click)="onDelete()">🗑️ Eliminar</button>
+    </div>
+  </div>
+</td>

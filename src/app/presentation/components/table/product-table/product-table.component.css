@@ -1,0 +1,79 @@
+/* ===== Contenedor de la tabla (evita cortar dropdowns y aplica la “tarjeta”) ===== */
+.table-scroll {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.05);
+  overflow: visible;
+  position: relative;
+}
+
+/* ===== Tabla ===== */
+.product-table {
+  width: 100%;
+  border-collapse: separate;        /* permite border-radius en header */
+  border-spacing: 0;
+  font-size: 14px;
+  color: #2b2b2b;
+  background: transparent;          /* el blanco lo da .table-scroll */
+}
+
+/* ===== Encabezado ===== */
+.product-table thead {
+  background: #f5f6f8;
+}
+
+.product-table th,
+.product-table td {
+  padding: 14px 12px;
+  border-bottom: 1px solid #e9eaee;
+  vertical-align: middle;           /* centra verticalmente */
+  line-height: 1.4;                 /* mismo line-height para todos */
+  height: 56px;                     /* altura uniforme por fila */
+}
+
+.product-table th {
+  font-weight: 600;
+  font-size: 14px;
+  color: #1e2b4f;
+  text-align: left;
+}
+
+/* Bordes redondeados solo arriba (header) */
+.product-table thead th:first-child { border-top-left-radius: 12px; }
+.product-table thead th:last-child  { border-top-right-radius: 12px; }
+
+/* ===== Anchos y alineación por columna ===== */
+/* 1: Logo | 2: Nombre | 3: Descripción | 4: Fecha lib. | 5: Fecha reest. | 6: Acciones */
+.product-table th:nth-child(1),
+.product-table td:nth-child(1) { width: 84px;  text-align: center; }
+.product-table th:nth-child(2),
+.product-table td:nth-child(2) { width: 22%; }
+.product-table th:nth-child(3),
+.product-table td:nth-child(3) { width: auto; }
+.product-table th:nth-child(4),
+.product-table td:nth-child(4) { width: 160px; text-align: center; }
+.product-table th:nth-child(5),
+.product-table td:nth-child(5) { width: 200px; text-align: center; }
+.product-table th:nth-child(6),
+.product-table td:nth-child(6) { width: 110px; text-align: center; }
+
+/* ===== Hover de fila completa ===== */
+.product-table tbody tr:hover {
+  background: #f9fafc;
+  transition: background 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+/* Última fila sin borde inferior */
+.product-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ===== (Opcional) Header sticky: descomenta si quieres el encabezado fijo al hacer scroll interno ===== */
+/*
+.product-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+*/

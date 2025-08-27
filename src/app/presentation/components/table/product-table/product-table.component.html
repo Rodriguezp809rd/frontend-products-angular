@@ -1,0 +1,28 @@
+
+<div class="table-scroll">
+ <table class="product-table">
+  <thead>
+    <tr>
+      <th>Logo</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Fecha de liberación</th>
+      <th>Fecha de reestructuración</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+   <tr
+  app-product-row
+  *ngFor="let product of products"
+  [product]="product"
+  [open]="openMenuId === product.id"
+  (menuToggle)="onMenuToggle(product.id)"
+  (edit)="onEdit($event)"
+  (delete)="onDelete($event)"
+></tr>
+
+  </tbody>
+</table>
+</div>

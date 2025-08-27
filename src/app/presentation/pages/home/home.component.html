@@ -1,0 +1,60 @@
+<div class="page-container">
+  <div class="header">
+    <h2 class="title">BANCO</h2>
+    <a class="add-button" [routerLink]="['/create']">Agregar</a>
+  </div>
+
+  <div class="filters">
+     <app-search-input
+    [searchTerm]="searchTerm"
+    (valueChange)="onSearchChange($event)">
+  </app-search-input>
+  </div>
+
+  <div class="table-container">
+      <app-product-table
+      *ngIf="!isLoading && !errorMessage && products.length > 0"
+      [products]="products"
+      (editProduct)="onEditProduct($event)"
+      (deleteProduct)="onDeleteClick($event)"
+    ></app-product-table>
+
+    <app-skeleton-row *ngIf="isLoading"></app-skeleton-row>
+
+    <div *ngIf="!isLoading && errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+
+    <div *ngIf="!isLoading && !errorMessage && products.length === 0" class="no-data">
+      No hay productos.
+    </div>
+  </div>
+
+  <div class="pagination-footer">
+    <span class="result-count">{{ totalResults }} Resultados</span>
+
+    <app-pagination-buttons
+      [currentPage]="currentPage"
+      [totalPages]="totalPages"
+      (pageChange)="onPageChange($event)"
+    ></app-pagination-buttons>
+
+ <app-pagination-select
+  [itemsPerPage]="itemsPerPage"
+  (limitChange)="onItemsPerPageChange($event)"
+></app-pagination-select>
+
+
+  </div>
+
+ <app-confirmation-modal
+  *ngIf="showDeleteModal"
+  [message]="'¿Estás seguro de eliminar el producto ' + (productToDelete?.name || '') + '?'"
+  [confirmLabel]="'Confirmar'"
+  [cancelLabel]="'Cancelar'"
+  [loading]="deleting"
+  (confirm)="onConfirmDelete()"
+  (cancel)="onCancelDelete()"
+></app-confirmation-modal>
+
+</div>

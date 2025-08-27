@@ -1,0 +1,88 @@
+<div class="page">
+  <div class="card">
+    <h2 class="title">{{ isEdit ? 'Editar producto' : 'Registrar producto' }}</h2>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <div class="grid">
+
+        <div class="field">
+          <label for="id">ID</label>
+          <input
+            id="id"
+            type="text"
+            formControlName="id"
+            placeholder="ID único (ej: prod-001)"
+            [disabled]="isEdit"
+          />
+
+          <small class="error" *ngIf="f.id.pending && !isEdit">Verificando ID...</small>
+
+          <small class="error" *ngIf="!isEdit && f.id.errors?.['idTaken']">
+            Este ID ya existe.
+          </small>
+          <small class="error" *ngIf="showError('id') && !f.id.errors?.['idTaken'] && !isEdit">
+            ID requerido (3–30). Letras, números, _ o -.
+          </small>
+        </div>
+
+
+        <div class="field">
+          <label for="name">Nombre</label>
+          <input id="name" type="text" formControlName="name" placeholder="Nombre del producto" />
+          <small class="error" *ngIf="showError('name')">Entre 6 y 100 caracteres.</small>
+        </div>
+
+        <div class="field span-2">
+          <label for="description">Descripción</label>
+          <input id="description" type="text" formControlName="description" placeholder="Descripción breve" />
+          <small class="error" *ngIf="showError('description')">Entre 10 y 200 caracteres.</small>
+        </div>
+
+
+        <div class="field">
+          <label for="logo">Logo (URL de imagen)</label>
+          <input id="logo" type="text" formControlName="logo" placeholder="https://.../logo.png" />
+          <small class="error" *ngIf="showError('logo')">
+            Debe ser una URL de imagen válida (png/jpg/jpeg/svg/webp/gif).
+          </small>
+        </div>
+
+
+       <div class="field">
+          <label for="date_release">Fecha de liberación</label>
+          <input
+            id="date_release"
+            type="date"
+            formControlName="date_release"
+            [attr.min]="todayISO" />
+          <small class="error"
+                *ngIf="form.get('date_release')?.hasError('pastDate') && (form.get('date_release')?.dirty || form.get('date_release')?.touched)">
+            Selecciona una fecha válida (hoy o futura).
+          </small>
+          <small class="error"
+                *ngIf="form.get('date_release')?.hasError('required') && (form.get('date_release')?.dirty || form.get('date_release')?.touched)">
+            Este campo es obligatorio.
+          </small>
+        </div>
+
+
+
+ 
+       <div class="field">
+          <label for="date_revision">Fecha Revisión</label>
+          <input id="date_revision" type="text" formControlName="date_revision" [disabled]="true" />
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="button" class="btn ghost" (click)="resetForm()">
+          {{ isEdit ? 'Restaurar' : 'Reiniciar' }}
+        </button>
+        <button type="submit" class="btn primary" [disabled]="form.invalid">
+          {{ isEdit ? 'Actualizar' : 'Guardar' }}
+        </button>
+        <a class="btn link" [routerLink]="['/']">Volver</a>
+      </div>
+    </form>
+  </div>
+</div>

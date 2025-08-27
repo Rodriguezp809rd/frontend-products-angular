@@ -1,0 +1,3 @@
+<select [value]="itemsPerPage" (change)="onChange($event)">
+  <option *ngFor="let o of options" [value]="o">{{ o }} / página</option>
+</select>
